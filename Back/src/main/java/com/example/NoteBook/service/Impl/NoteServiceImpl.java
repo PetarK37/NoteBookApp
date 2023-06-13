@@ -47,9 +47,9 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public Note Update(NoteRequestDto noteDto,String id) throws NoteDoesntExistsException,OldEntityVersionException {
+    public Note Update(NoteRequestDto noteDto,String id,Long version) throws NoteDoesntExistsException,OldEntityVersionException {
         Note note = noteRepository.findById(id).orElse(null);
-        if (noteDto.getVersion() < note.getVersion()){
+        if (version < note.getVersion()){
             throw new OldEntityVersionException("You can not update older versionn of a note");
         }
         if (note == null){

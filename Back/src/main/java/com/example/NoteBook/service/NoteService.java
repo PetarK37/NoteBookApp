@@ -12,6 +12,6 @@ public interface NoteService {
     List<Note> GetAll();
     Boolean RemoveOne(String id,Long version);
     Note Save(Note note);
-    Note Update(NoteRequestDto noteDto,String id) throws NoteDoesntExistsException, OldEntityVersionException;
+    Note Update(NoteRequestDto noteDto,String id,Long version) throws NoteDoesntExistsException, OldEntityVersionException;
 
 }

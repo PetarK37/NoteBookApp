@@ -51,13 +51,13 @@ public class NoteController {
     }
 
     @ExceptionHandler(NoteDoesntExistsException.class)
-    @PutMapping(path = "/{id}",consumes = "application/json")
-    public ResponseEntity<Object> update(@PathVariable("id") String id,@Valid @RequestBody NoteRequestDto noteDto, BindingResult bindingResult){
+    @PutMapping(path = "/{version}/{id}",consumes = "application/json")
+    public ResponseEntity<Object> update(@PathVariable("id") String id,@PathVariable("version") Long version,@Valid @RequestBody NoteRequestDto noteDto, BindingResult bindingResult){
         if (bindingResult.hasErrors() ){
             return new ResponseEntity(constructErrorString(bindingResult),HttpStatus.BAD_REQUEST);
         }
         try {
-            Note savedNote = noteService.Update(noteDto,id);
+            Note savedNote = noteService.Update(noteDto,id,version);
             return new ResponseEntity<>(savedNote,HttpStatus.CREATED);
         }catch (NoteDoesntExistsException e){
             return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
