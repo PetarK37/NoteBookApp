@@ -5,6 +5,7 @@ import com.example.NoteBook.exceptions.NoteDoesntExistsException;
 import com.example.NoteBook.model.Note;
 import com.example.NoteBook.repository.NoteRepository;
 import com.example.NoteBook.service.NoteService;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,6 +30,7 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
+    @Transactional
     public Boolean RemoveOne(String id) {
         return noteRepository.removeByUuid(id) > 0;
     }
@@ -40,9 +42,9 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public Note Update(NoteRequestDto noteDto,String id) throws NoteDoesntExistsException {
-        Note note = noteRepository.getOne(id);
+        Note note = noteRepository.findById(id).orElse(null);
         if (note == null){
-            throw new NoteDoesntExistsException("Note with id: [" + id + "] doesnt exists");
+            throw new NoteDoesntExistsException("Note with id: [" + id + "] doesnt exist");
         }
         note.setTitle(noteDto.getTitle());
         note.setContent(noteDto.getContent());

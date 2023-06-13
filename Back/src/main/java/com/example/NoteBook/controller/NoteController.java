@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,8 +42,8 @@ public class NoteController {
         return new ResponseEntity<>(note,HttpStatus.OK);
     }
 
-    @PostMapping
-    public ResponseEntity<Note> save(@Valid @ModelAttribute NoteRequestDto noteDto, BindingResult bindingResult){
+    @PostMapping(consumes = "application/json")
+    public ResponseEntity<Note> save(@Valid @RequestBody NoteRequestDto noteDto, BindingResult bindingResult){
         if (bindingResult.hasErrors() ){
             return new ResponseEntity(constructErrorString(bindingResult),HttpStatus.BAD_REQUEST);
         }
@@ -50,8 +51,9 @@ public class NoteController {
         return new ResponseEntity<>(savedNote,HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable("id") String id,@Valid @ModelAttribute NoteRequestDto noteDto, BindingResult bindingResult){
+    @ExceptionHandler(NoteDoesntExistsException.class)
+    @PutMapping(path = "/{id}",consumes = "application/json")
+    public ResponseEntity<Object> update(@PathVariable("id") String id,@Valid @RequestBody NoteRequestDto noteDto, BindingResult bindingResult){
         if (bindingResult.hasErrors() ){
             return new ResponseEntity(constructErrorString(bindingResult),HttpStatus.BAD_REQUEST);
         }
@@ -73,9 +75,9 @@ public class NoteController {
     }
 
     private static StringBuilder constructErrorString(BindingResult bindingResult) {
-        List<ObjectError> errors = bindingResult.getAllErrors();
+        List<FieldError> errors = bindingResult.getFieldErrors();
         StringBuilder errorString = new StringBuilder();
-        errors.forEach(objectError -> errorString.append(objectError.getObjectName() + "Field is missing"));
+        errors.forEach(objectError -> errorString.append(objectError.getField().toUpperCase() + "  field is missing \n"));
         return errorString;
     }
 }
