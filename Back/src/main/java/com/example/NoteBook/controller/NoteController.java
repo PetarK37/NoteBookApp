@@ -2,6 +2,7 @@ package com.example.NoteBook.controller;
 
 import com.example.NoteBook.dto.NoteRequestDto;
 import com.example.NoteBook.exceptions.NoteDoesntExistsException;
+import com.example.NoteBook.exceptions.OldEntityVersionException;
 import com.example.NoteBook.model.Note;
 import com.example.NoteBook.service.NoteService;
 import jakarta.validation.Valid;
@@ -63,11 +64,14 @@ public class NoteController {
         }catch (NoteDoesntExistsException e){
             return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
         }
+        catch (OldEntityVersionException e){
+            return new ResponseEntity<>(e.getMessage(),HttpStatus.CONFLICT);
+        }
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Object> delete(@PathVariable("id") String id){
-        boolean isDeleted = noteService.RemoveOne(id);
+    @DeleteMapping("/{version}/{id}")
+    public ResponseEntity<Object> delete(@PathVariable("id") String id,@PathVariable("version") Long version){
+        boolean isDeleted = noteService.RemoveOne(id,version);
         if (!isDeleted){
             return new ResponseEntity<>("Couldn't delete note with id: [ "+ id +"]",HttpStatus.INTERNAL_SERVER_ERROR);
         }

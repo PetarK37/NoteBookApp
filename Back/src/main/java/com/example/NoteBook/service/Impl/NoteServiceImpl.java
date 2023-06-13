@@ -2,6 +2,7 @@ package com.example.NoteBook.service.Impl;
 
 import com.example.NoteBook.dto.NoteRequestDto;
 import com.example.NoteBook.exceptions.NoteDoesntExistsException;
+import com.example.NoteBook.exceptions.OldEntityVersionException;
 import com.example.NoteBook.model.Note;
 import com.example.NoteBook.repository.NoteRepository;
 import com.example.NoteBook.service.NoteService;
@@ -31,8 +32,13 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     @Transactional
-    public Boolean RemoveOne(String id) {
-        return noteRepository.removeByUuid(id) > 0;
+    public Boolean RemoveOne(String id,Long version ) {
+        Note note = noteRepository.findById(id).orElse(null);
+        if (version < note.getVersion()){
+            return false;
+        }else{
+            return noteRepository.removeByUuid(id) > 0;
+        }
     }
 
     @Override
@@ -41,8 +47,11 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public Note Update(NoteRequestDto noteDto,String id) throws NoteDoesntExistsException {
+    public Note Update(NoteRequestDto noteDto,String id) throws NoteDoesntExistsException,OldEntityVersionException {
         Note note = noteRepository.findById(id).orElse(null);
+        if (noteDto.getVersion() < note.getVersion()){
+            throw new OldEntityVersionException("You can not update older versionn of a note");
+        }
         if (note == null){
             throw new NoteDoesntExistsException("Note with id: [" + id + "] doesnt exist");
         }

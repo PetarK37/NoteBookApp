@@ -1,10 +1,7 @@
 package com.example.NoteBook.model;
 
 import com.example.NoteBook.dto.NoteRequestDto;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -22,10 +19,13 @@ public class Note {
     private String Title;
     @Column(nullable = false)
     private String Content;
+    @Version
+    private Long version;
 
     public Note(NoteRequestDto note){
         this.Title = note.getTitle();
         this.Content = note.getContent();
+        this.version = note.getVersion();
         this.uuid = UUID.randomUUID().toString();
     }
 }
