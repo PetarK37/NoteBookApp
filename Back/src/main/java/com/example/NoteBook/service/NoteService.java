@@ -1,0 +1,16 @@
+package com.example.NoteBook.service;
+
+import com.example.NoteBook.dto.NoteRequestDto;
+import com.example.NoteBook.exceptions.NoteDoesntExistsException;
+import com.example.NoteBook.model.Note;
+
+import java.util.List;
+
+public interface NoteService {
+    Note GetOne(String id);
+    List<Note> GetAll();
+    Boolean RemoveOne(String id);
+    Note Save(Note note);
+    Note Update(NoteRequestDto noteDto,String id) throws NoteDoesntExistsException;
+
+}

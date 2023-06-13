@@ -1,10 +1,10 @@
-package com.ptark.notesApp;
+package com.example.NoteBook;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class NotesAppApplicationTests {
+class NoteBookApplicationTests {
 
 	@Test
 	void contextLoads() {
