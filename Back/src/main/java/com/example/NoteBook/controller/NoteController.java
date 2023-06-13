@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -48,8 +47,7 @@ public class NoteController {
         if (bindingResult.hasErrors() ){
             return new ResponseEntity(constructErrorString(bindingResult),HttpStatus.BAD_REQUEST);
         }
-        Note savedNote = noteService.Save(new Note(noteDto));
-        return new ResponseEntity<>(savedNote,HttpStatus.CREATED);
+        return new ResponseEntity<>(noteService.Save(new Note(noteDto)),HttpStatus.CREATED);
     }
 
     @ExceptionHandler(NoteDoesntExistsException.class)
@@ -81,7 +79,7 @@ public class NoteController {
     private static StringBuilder constructErrorString(BindingResult bindingResult) {
         List<FieldError> errors = bindingResult.getFieldErrors();
         StringBuilder errorString = new StringBuilder();
-        errors.forEach(objectError -> errorString.append(objectError.getField().toUpperCase() + "  field is missing \n"));
+        errors.forEach(objectError -> errorString.append(objectError.getField().toUpperCase()).append("  field is missing \n"));
         return errorString;
     }
 }
