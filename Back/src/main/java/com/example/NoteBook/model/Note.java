@@ -2,6 +2,7 @@ package com.example.NoteBook.model;
 
 import com.example.NoteBook.dto.NoteRequestDto;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import java.util.UUID;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "notes")
 public class Note {
@@ -25,7 +27,6 @@ public class Note {
     public Note(NoteRequestDto note){
         this.Title = note.getTitle();
         this.Content = note.getContent();
-        this.version = note.getVersion();
         this.uuid = UUID.randomUUID().toString();
     }
 }

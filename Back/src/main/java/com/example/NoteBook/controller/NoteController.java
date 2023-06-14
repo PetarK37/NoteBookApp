@@ -28,7 +28,7 @@ public class NoteController {
     public ResponseEntity<List<Note>> getAll(){
         List<Note> notes = noteService.GetAll();
         if (notes.isEmpty()){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(notes,HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(notes,HttpStatus.OK);
     }
@@ -50,7 +50,6 @@ public class NoteController {
         return new ResponseEntity<>(noteService.Save(new Note(noteDto)),HttpStatus.CREATED);
     }
 
-    @ExceptionHandler(NoteDoesntExistsException.class)
     @PutMapping(path = "/{version}/{id}",consumes = "application/json")
     public ResponseEntity<Object> update(@PathVariable("id") String id,@PathVariable("version") Long version,@Valid @RequestBody NoteRequestDto noteDto, BindingResult bindingResult){
         if (bindingResult.hasErrors() ){
@@ -79,7 +78,7 @@ public class NoteController {
     private static StringBuilder constructErrorString(BindingResult bindingResult) {
         List<FieldError> errors = bindingResult.getFieldErrors();
         StringBuilder errorString = new StringBuilder();
-        errors.forEach(objectError -> errorString.append(objectError.getField().toUpperCase()).append("  field is missing \n"));
+        errors.forEach(objectError -> errorString.append(objectError.getField().toUpperCase()).append(" field is missing \n"));
         return errorString;
     }
 }

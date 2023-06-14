@@ -34,7 +34,7 @@ public class NoteServiceImpl implements NoteService {
     @Transactional
     public Boolean RemoveOne(String id,Long version ) {
         Note note = noteRepository.findById(id).orElse(null);
-        if (version < note.getVersion()){
+        if (note == null || version < note.getVersion()){
             return false;
         }else{
             return noteRepository.removeByUuid(id) > 0;
@@ -49,11 +49,11 @@ public class NoteServiceImpl implements NoteService {
     @Override
     public Note Update(NoteRequestDto noteDto,String id,Long version) throws NoteDoesntExistsException,OldEntityVersionException {
         Note note = noteRepository.findById(id).orElse(null);
-        if (version < note.getVersion()){
-            throw new OldEntityVersionException("You can not update older versionn of a note");
-        }
         if (note == null){
             throw new NoteDoesntExistsException("Note with id: [" + id + "] doesnt exist");
+        }
+        if (version < note.getVersion()){
+            throw new OldEntityVersionException("You can not update older version of a note");
         }
         note.setTitle(noteDto.getTitle());
         note.setContent(noteDto.getContent());
