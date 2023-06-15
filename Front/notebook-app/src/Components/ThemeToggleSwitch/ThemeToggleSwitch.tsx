@@ -11,11 +11,12 @@ function ThemeToggleSwitch() {
 
     return (
         <>
-        <p className={'margin-l-auto ' + ` toggle${toggled ? "-label-night" : "-label"}`}>Theme</p>
+        <p className="margin-l-auto label">Light</p>
         <div  className={`toggle${toggled ? " night" : ""}`} onClick={toggleTheme}>
             <div className="notch">
             </div>
         </div>
+        <p className="label">Dark</p>
         </>
     )
 }

@@ -5,6 +5,29 @@ html{
     --dark-text-faded:#DDDEE0;
     --background-dark:#23272f;
     --background-light:#ffffff;
+    --btn-dark:#2E3239;
+    --btn-dark-hover:#393D44;
+    --btn-light:#F2F2F2;
+    --btn-light-hover:#E6E6E6;
+    --btn-edit:#93D3ED;
+    --btn-edit-hover:#80C4DF;
+    --btn-delete:#EF9F9F;
+    --btn-delete-hover:#D68B8B;
+}
+
+.shadow-s{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.container{
+    margin: 0 calc(15vw);
+}
+
+.gap-8{
+    gap: 8px;
+}
+
+.gap-12{
+    gap: 12px;
 }
 
 .flex{
@@ -22,25 +45,34 @@ html{
     justify-content: center;
 }
 
+.justify-content-between{
+    justify-content: space-between;
+}
+
 .align-items-center{
     align-items: center;
 }
 .margin-l-auto{
     margin-left: auto;
 }
+.App{
+    min-height: 100%;
+}
 
 .App-light{
     color: var(--ligth-text-primary);
     background-color: var(--background-light);
-    transition: 0.4s ease color;
-    transition: 0.4s ease background-color;
+    transition: 0.2s linear color;
+    transition: 0.2s linear background-color;
+    height: 100%;
 }
 
 .App-dark{
     color: var(--dark-text-primary);
     background-color: var(--background-dark);
-    transition: 0.4s ease color;
-    transition: 0.4s ease background-color;
+    transition: 0.2s linear color;
+    transition: 0.2s linear background-color;
+    height: 100%;
 }
 
 
