@@ -1,0 +1,49 @@
+html{
+    --ligth-text-primary: #333;
+    --ligth-text-faded: #888;
+    --dark-text-primary:#f6f7f9;
+    --dark-text-faded:#DDDEE0;
+    --background-dark:#23272f;
+    --background-light:#ffffff;
+}
+
+.flex{
+    display: flex;
+}
+
+.flex-column{
+    flex-direction: column;
+}
+.inline-block{
+    display: inline-block;
+}
+
+.justify-content-center{
+    justify-content: center;
+}
+
+.align-items-center{
+    align-items: center;
+}
+.margin-l-auto{
+    margin-left: auto;
+}
+
+.App-light{
+    color: var(--ligth-text-primary);
+    background-color: var(--background-light);
+    transition: 0.4s ease color;
+    transition: 0.4s ease background-color;
+}
+
+.App-dark{
+    color: var(--dark-text-primary);
+    background-color: var(--background-dark);
+    transition: 0.4s ease color;
+    transition: 0.4s ease background-color;
+}
+
+
+
+
+
