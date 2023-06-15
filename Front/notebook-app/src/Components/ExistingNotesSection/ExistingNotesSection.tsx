@@ -5,8 +5,8 @@ import NoteCard from '../NoteCard/NoteCard';
 
 export interface Note {
   uuid: React.Key
-  title: String,
-  content: String,
+  title: string,
+  content: string,
   version: number,
 }
 

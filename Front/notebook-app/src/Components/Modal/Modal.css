@@ -1,0 +1,46 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.459);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: visibility 0.1s, opacity 0.6s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+}
+
+.App-dark .modal{
+    background-color: var(--background-dark);
+
+}
+
+.App-light .modal{
+    background-color: var(--background-light);
+}
+
+.modal{
+    border-radius: 5px;
+    width: fit-content;
+    height: fit-content;
+    padding: 24px;
+    transition: visibility 0.1s, opacity 0.6s;
+    visibility: hidden;
+    opacity: 1;
+    z-index: 10;
+}
+
+.modal--visible,.backdrop--visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-title{
+    cursor: pointer;
+    font-size: 2rem;
+    gap:24px
+}

@@ -77,6 +77,32 @@ html{
 
 
 
+.input,.text-area{
+    background-color: transparent;
+    color: inherit;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    padding: 16px;
+    box-shadow: none;
+    font-size: inherit;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+}
+
+.text-area{
+    resize: vertical;
+}
+
+
+.invisible {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .visible {
+    opacity: 1;
+  }
 
 
 
