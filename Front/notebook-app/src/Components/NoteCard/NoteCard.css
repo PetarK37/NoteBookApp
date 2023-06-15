@@ -13,12 +13,13 @@
 
 .note > header{
     font-size:2.4rem;
-    padding: 0 16px;
+    padding: 0 24px;
 }
 
 .note > article{
     font-size:2rem ;
-    padding:16px;
+    padding:24px;
+    line-height: 1.6;
 }
 
 .note-action-row {

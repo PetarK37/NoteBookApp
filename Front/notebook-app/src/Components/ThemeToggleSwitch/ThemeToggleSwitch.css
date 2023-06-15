@@ -43,3 +43,53 @@
     color:var(--ligth-text-faded)
 }
 
+@media (max-width: 600px) {  
+    .toggle {
+        height: 30px;
+        width: 70px;
+    }
+
+    .notch {
+        height: 20px;
+        width: 20px;
+    }
+    
+    .night>.notch {
+        background: whitesmoke;
+        box-shadow: 0 0 5px whitesmoke;
+        transform: translate(40px, 0);
+    }
+  }
+
+
+  @media (max-width: 435px) {  
+    .label {
+        display: none;
+    }
+    .toggle {
+        margin-left: auto;
+    }
+  }
+
+  @media (max-width: 350px) {  
+    .toggle {
+        height: 30px;
+        width: 60px;
+    }
+
+    .notch {
+        height: 20px;
+        width: 20px;
+    }
+    
+    .night>.notch {
+        background: whitesmoke;
+        box-shadow: 0 0 5px whitesmoke;
+        transform: translate(20px, 0);
+    }
+
+    .label {
+        display: none;
+    }
+
+  }

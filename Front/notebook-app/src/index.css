@@ -19,3 +19,9 @@ code {
 #root{
   height: 100vh;
 }
+
+@media (max-width: 500px) {  
+  html{
+    font-size: 55%;
+  }
+}
