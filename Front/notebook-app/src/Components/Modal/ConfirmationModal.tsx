@@ -10,9 +10,13 @@ interface ModalProps {
     isDisplayed: boolean
 }
 function ConfirmationModal({ title, content, onCancel, onOk, isDisplayed = false }: ModalProps) {
+    function handleModalClick(e : React.SyntheticEvent) {
+        e.stopPropagation()
+    }
+
     return (
         <div className={isDisplayed ? 'backdrop--visible backdrop' : 'backdrop'} onClick={onCancel}>
-            <div className={isDisplayed ? 'modal--visible modal' : 'modal'}>
+            <div onClick={handleModalClick}className={isDisplayed ? 'modal--visible modal' : 'modal'}>
                 <div className={'flex gap-12 justify-content-between align-items-center modal-title'}>
                     <h3>{title}</h3>
                     <h3 onClick={onCancel}>X</h3>
@@ -22,7 +26,7 @@ function ConfirmationModal({ title, content, onCancel, onOk, isDisplayed = false
                 </div>
                 <div className='flex gap-12'>
                 <Button text='Cancel' onClick={onCancel}  className='btn-larger btn-delete margin-l-auto'></Button>
-                <Button text='Ok' onClick={onOk} className='btn-larger btn-edit '></Button>
+                <Button text='Yes' onClick={onOk} className='btn-larger btn-edit '></Button>
                 </div>
             </div>
         </div>

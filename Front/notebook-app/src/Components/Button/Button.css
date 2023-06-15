@@ -84,3 +84,16 @@
     background-color: var(--btn-delete-hover);
 }
 
+.btn-save,
+.btn-save:link,
+.btn-save:visited {
+    background-color: var(--btn-save);
+    font-weight: 500;
+    color: var(--ligth-text-primary);
+}
+
+.btn-save:hover,
+.btn-save:active {
+    background-color: var(--btn-save-hover);
+}
+

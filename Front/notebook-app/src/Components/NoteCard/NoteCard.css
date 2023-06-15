@@ -26,6 +26,7 @@
     padding:16px;
 }
 
+
 .App-dark .card
 {
     background-color: var(--btn-dark-hover);
@@ -47,3 +48,4 @@
 .eidt-form > header{
     padding: 12px 24px;
 }
+

@@ -13,6 +13,8 @@ html{
     --btn-edit-hover:#80C4DF;
     --btn-delete:#EF9F9F;
     --btn-delete-hover:#D68B8B;
+    --btn-save:#81C470;
+    --btn-save-hover: #74AF64;
 }
 
 .shadow-s{
