@@ -9,13 +9,15 @@ The Notebook App offers the following CRUD (Create, Read, Update, Delete) operat
 3. **Update Note**: Users can edit the title and content  of an existing note.
 4. **Delete Note**: Users can delete a note.
 
-## Prerequisites
+## Requirements
 Before running the Notebook App, make sure you have the following dependencies installed:
-
 - Node.js with NVM (Node Version Manager)
 - Java 17
 - Maven
 - MySQL
+
+**Note:** If you're going to run it using Docker-compose, then the only thing you need is:
+- Docker and Docker-compose
 
 ## Running the Project
 
