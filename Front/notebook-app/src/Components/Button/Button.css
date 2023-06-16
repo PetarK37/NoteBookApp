@@ -1,0 +1,99 @@
+ .btn,
+ .btn:link,
+.btn:visited {
+    color: inherit;
+    background-color: inherit;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    transition: 0.1s linear all;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.btn:hover{
+    cursor: pointer;
+}
+
+.App-dark .btn-full,
+.App-dark .btn-full:link,
+.App-dark .btn-full:visited {
+    background-color: var(--btn-dark);
+}
+
+.App-light .btn-full,
+.App-dalightrk .btn-full:link,
+.App-light .btn-full:visited {
+    background-color: var(--btn-light);
+}
+
+.App-dark .btn-full:hover,
+.App-dark .btn-full:active {
+    background-color: var(--btn-dark-hover);
+}
+
+.App-light .btn-full:hover,
+.App-light .btn-full:active {
+    background-color: var(--btn-light-hover);
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 120%;
+}
+
+
+.add-note-btn {
+    font-size: 2.4rem;
+    padding: 1rem 0rem;
+    margin-bottom: 16px;
+}
+
+.btn-larger{
+    padding: 1rem 3rem;
+    font-size: 2rem;
+}
+
+.btn-edit,
+.btn-edit:link,
+.btn-edit:visited {
+    background-color: var(--btn-edit);
+    font-weight: 500;
+    color: var(--ligth-text-primary);
+}
+
+.btn-edit:hover,
+.btn-edit:active {
+    background-color: var(--btn-edit-hover);
+}
+
+.btn-delete,
+.btn-delete:link,
+.btn-delete:visited {
+    background-color: var(--btn-delete);
+    font-weight: 500;
+    color: var(--ligth-text-primary);
+}
+
+.btn-delete:hover,
+.btn-delete:active {
+    background-color: var(--btn-delete-hover);
+}
+
+.btn-save,
+.btn-save:link,
+.btn-save:visited {
+    background-color: var(--btn-save);
+    font-weight: 500;
+    color: var(--ligth-text-primary);
+}
+
+.btn-save:hover,
+.btn-save:active {
+    background-color: var(--btn-save-hover);
+}
+

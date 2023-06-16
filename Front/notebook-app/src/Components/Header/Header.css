@@ -1,0 +1,10 @@
+nav{
+    padding: 0 2.4rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 0.5px 4px;
+}
+
+.navTitle{
+    font-size: 3.6rem;
+    font-weight: 500;
+}
+

@@ -1,0 +1,93 @@
+.toggle {
+    height: 40px;
+    width: 100px;
+    border-radius: 50px;
+    background-image: linear-gradient(#87ceeb, #87ceeb);
+    position: relative;
+    cursor: pointer;
+}
+
+.toggle.night {
+    background-image: linear-gradient(#5C2E8A, #5C2E8A);
+}
+
+.notch {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background: #FFFF19;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.night>.notch {
+    background: #F8F8F8;
+    transform: translate(60px, 0);
+}
+
+.label{
+    padding: 0 0.8rem;
+    font-size: 2rem;
+}
+
+.App-dark ,label{
+    color:var(--dark-text-faded);
+}
+
+.App-light .label{
+    color:var(--ligth-text-faded)
+}
+
+@media (max-width: 600px) {  
+    .toggle {
+        height: 30px;
+        width: 70px;
+    }
+
+    .notch {
+        height: 20px;
+        width: 20px;
+    }
+    
+    .night>.notch {
+        background: whitesmoke;
+        box-shadow: 0 0 5px whitesmoke;
+        transform: translate(40px, 0);
+    }
+  }
+
+
+  @media (max-width: 435px) {  
+    .label {
+        display: none;
+    }
+    .toggle {
+        margin-left: auto;
+    }
+  }
+
+  @media (max-width: 350px) {  
+    .toggle {
+        height: 30px;
+        width: 60px;
+    }
+
+    .notch {
+        height: 20px;
+        width: 20px;
+    }
+    
+    .night>.notch {
+        background: whitesmoke;
+        box-shadow: 0 0 5px whitesmoke;
+        transform: translate(20px, 0);
+    }
+
+    .label {
+        display: none;
+    }
+
+  }

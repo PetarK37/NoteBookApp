@@ -1,0 +1,134 @@
+
+html{
+    --ligth-text-primary: #333;
+    --ligth-text-faded: #888;
+    --dark-text-primary:#f6f7f9;
+    --dark-text-faded:#DDDEE0;
+    --background-dark:#23272f;
+    --background-light:#ffffff;
+    --btn-dark:#2E3239;
+    --btn-dark-hover:#393D44;
+    --btn-light:#F2F2F2;
+    --btn-light-hover:#E6E6E6;
+    --btn-edit:#93D3ED;
+    --btn-edit-hover:#80C4DF;
+    --btn-delete:#EF9F9F;
+    --btn-delete-hover:#D68B8B;
+    --btn-save:#81C470;
+    --btn-save-hover: #74AF64;
+}
+
+.Toastify__toast-body {
+    font-size: 1.4rem;
+}
+
+.Toastify__toast-theme--dark {
+    background-color: var(--btn-dark) !important;
+}
+
+.container{
+    margin: 0 calc(15vw);
+}
+
+.gap-8{
+    gap: 8px;
+}
+
+.gap-12{
+    gap: 12px;
+}
+
+.flex{
+    display: flex;
+}
+
+.flex-column{
+    flex-direction: column;
+}
+.inline-block{
+    display: inline-block;
+}
+
+.justify-content-center{
+    justify-content: center;
+}
+
+.justify-content-between{
+    justify-content: space-between;
+}
+
+.align-items-center{
+    align-items: center;
+}
+.margin-l-auto{
+    margin-left: auto;
+}
+.App{
+    height: 100%;
+}
+
+.App-light{
+    color: var(--ligth-text-primary);
+    background-color: var(--background-light);
+    transition: 0.2s linear color;
+    transition: 0.2s linear background-color;
+    min-height: 100%;
+}
+
+.App-dark{
+    color: var(--dark-text-primary);
+    background-color: var(--background-dark);
+    transition: 0.2s linear color;
+    transition: 0.2s linear background-color;
+    min-height: 100%;
+}
+
+
+
+.input,.text-area{
+    background-color: transparent;
+    color: inherit;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    padding: 16px;
+    box-shadow: none;
+    font-size: inherit;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+}
+
+.text-area{
+    resize: vertical;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+      }
+      25% {
+        transform: translateX(5px);
+      }
+      50% {
+        transform: translateX(-5px);
+      }
+      75% {
+        transform: translateX(5px);
+      }
+      100% {
+        transform: translateX(0);
+      }
+  }
+  
+.invalid {
+    animation: shake 0.2s ease-in-out 0s 2;
+    border:2px solid #D68B8B;
+}
+
+.invalid:placeholder-shown{
+    color: #D68B8B;
+}
+
+
+
+
