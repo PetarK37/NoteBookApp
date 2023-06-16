@@ -1,9 +1,10 @@
-import React, { createContext,useState,useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
+import { ToastContainer } from "react-toastify";
 import '../../App.css'
 
 export const ThemeContext = createContext<ThemeContextProps>({
     theme: 'light',
-    toggleTheme: () => {},
+    toggleTheme: () => { },
 });
 
 interface ComponentChildrenProps {
@@ -14,7 +15,7 @@ interface ThemeContextProps {
     theme: Theme;
     toggleTheme: () => void;
 }
-  
+
 
 type Theme = 'light' | 'dark';
 
@@ -39,9 +40,22 @@ export function ThemeProvider({ children }: ComponentChildrenProps) {
 
     return (
         <ThemeContext.Provider value={{ theme, toggleTheme }}>
-             <div className={theme === 'light' ? 'App-light'  : 'App-dark'}>
+            <div className={theme === 'light' ? 'App-light' : 'App-dark'}>
+                <ToastContainer
+                    position="bottom-left"
+                    autoClose={5000}
+                    limit={1}
+                    hideProgressBar
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme= {theme}
+                />
                 {children}
-             </div>
+            </div>
         </ThemeContext.Provider>
     )
 }

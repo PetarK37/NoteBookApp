@@ -19,7 +19,7 @@ public class Note {
     private String uuid;
     @Column(nullable = false)
     private String Title;
-    @Column(nullable = false)
+    @Column(nullable = false,columnDefinition = "TEXT")
     private String Content;
     @Version
     private Long version;

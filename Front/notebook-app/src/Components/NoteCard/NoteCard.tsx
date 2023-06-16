@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Note } from '../ExistingNotesSection/ExistingNotesSection'
+import { Note } from '../../Services/ApiService';
 import './NoteCard.css'
 import '../../App.css'
 import Button from '../Button/Button'
@@ -9,6 +9,7 @@ import ConfirmationModal from '../Modal/ConfirmationModal'
 interface NoteCardProps {
     note: Note,
 }
+
 interface NoteEditCardProps {
     note: Note,
     onSubmit?: () => void,

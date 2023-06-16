@@ -1,3 +1,4 @@
+
 html{
     --ligth-text-primary: #333;
     --ligth-text-faded: #888;
@@ -17,9 +18,14 @@ html{
     --btn-save-hover: #74AF64;
 }
 
-.shadow-s{
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+.Toastify__toast-body {
+    font-size: 1.4rem;
 }
+
+.Toastify__toast-theme--dark {
+    background-color: var(--btn-dark) !important;
+}
+
 .container{
     margin: 0 calc(15vw);
 }
@@ -96,15 +102,32 @@ html{
     resize: vertical;
 }
 
-
-.invisible {
-    opacity: 0;
-    transition: opacity 0.3s ease;
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+      }
+      25% {
+        transform: translateX(5px);
+      }
+      50% {
+        transform: translateX(-5px);
+      }
+      75% {
+        transform: translateX(5px);
+      }
+      100% {
+        transform: translateX(0);
+      }
   }
   
-  .visible {
-    opacity: 1;
-  }
+.invalid {
+    animation: shake 0.2s ease-in-out 0s 2;
+    border:2px solid #D68B8B;
+}
+
+.invalid:placeholder-shown{
+    color: #D68B8B;
+}
 
 
 
