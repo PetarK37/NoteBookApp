@@ -15,8 +15,9 @@ Before running the Notebook App, make sure you have the following dependencies i
 - Java 17
 - Maven
 - MySQL
-If you're going to run it using Docker compose, then the only thing you need is:
-- Docker-compose
+
+**Note:** If you're going to run it using Docker-compose, then the only thing you need is:
+- Docker and Docker-compose
 
 ## Running the Project
 
