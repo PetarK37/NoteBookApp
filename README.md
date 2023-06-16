@@ -19,6 +19,7 @@ Before running the Notebook App, make sure you have the following dependencies i
 
 ## Running the Project
 
+
 ### Using Docker Compose
 1. Clone the repository: `git clone https://github.com/your-username/notebook-app.git`
 2. Navigate to the project directory: `cd notebook-app`
@@ -40,5 +41,6 @@ Before running the Notebook App, make sure you have the following dependencies i
    - Start the React development server: `npm start`
 7. Access the Notebook App in your browser at `http://localhost:3000`.
 
+> **Reminder:** you can test back-end part using postam collection provided in `NoteBook.postman_collection.json`.
 > **Note**: If you choose to run the application manually, ensure that both the back-end server and the front-end development server are running simultaneously. Additionally, make sure you have set up NVM and switched to the appropriate Node.js version required for the project.
 
