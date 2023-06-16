@@ -21,7 +21,7 @@ export const getNotes = async () => {
         const response = await axios.get(API_BASE_URL);
         return response.data
     }catch (error){
-        if((error as AxiosError).response?.status != NOT_FOUND_STATUS){
+        if((error as AxiosError).response?.status !== NOT_FOUND_STATUS){
             throw new Error("There has been problem with getting your notes,please try again later.")
         }
     }

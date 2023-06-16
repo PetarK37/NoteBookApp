@@ -1,0 +1,56 @@
+version: "3.8"
+
+services:
+    front:
+        restart: always
+        container_name: "front"
+        build:
+            context: ./Front/notebook-app
+            dockerfile: ./Dockerfile
+        networks:
+             - notes-network
+        ports:
+            - "3000:3000"
+        volumes:
+            - ./Front/notebook-app:/src
+            - ./Front/notebook-app:/public
+        depends_on:
+            - back
+    mysql_notes:
+        image: mysql:8.0.13
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: Root123.
+            MYSQL_DATABASE: notebook
+            SERVICE_NAME: mysql_notes
+        healthcheck:
+            test: ["CMD-SHELL", "mysqladmin ping -h localhost"]
+            interval: 5s
+            timeout: 3s
+            retries: 10
+        volumes:
+            - mysql_notes_vol:/var/lib/mysql
+            - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+        ports:
+            - "3307:3306"
+        networks:
+            - notes-network
+    back:
+        restart: always
+        container_name: "back"
+        build:
+            context: ./Back
+            dockerfile: ./Dockerfile
+        networks:
+            - notes-network
+        ports: 
+            - "8080:8080"
+        depends_on:
+            - mysql_notes
+networks:
+  notes-network:
+    driver: bridge
+volumes:
+    mysql_notes_vol:
+        
+        

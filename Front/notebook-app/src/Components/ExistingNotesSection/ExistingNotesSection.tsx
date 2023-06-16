@@ -33,7 +33,7 @@ function ExistingNotesSection() {
   }
 
   function removeNote(uuid: string){
-    const newNotes = notes?.filter(n => n.uuid != uuid)
+    const newNotes = notes?.filter(n => n.uuid !== uuid)
     setNotes(newNotes)
   }
 
