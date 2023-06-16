@@ -31,12 +31,18 @@ function ExistingNotesSection() {
     const newNotes = [note,...notes as Note[]]
     setNotes(newNotes)
   }
+
+  function removeNote(uuid: string){
+    const newNotes = notes?.filter(n => n.uuid != uuid)
+    setNotes(newNotes)
+  }
+
   return (
     <div className='notes-list gap-12 container flex flex-column justify-content-center'>
       <Button onClick={() => setShowAddDialog(true)} text={'Add new note'} className='btn-full add-note-btn' iconPosition='R' icon={AddIcon()}></Button>
       {(notes?.length !== undefined && notes.length > 0) && 
         notes.map(note => {
-          return <NoteCard note={note} key={note.uuid}></NoteCard>
+          return <NoteCard note={note} key={note.uuid} onDelete={() => removeNote(note.uuid.toString())}></NoteCard>
         })
       }
      {!(notes?.length !== undefined && notes.length > 0) && <div className='flex justify-content-center align-items-center no-data-container'>

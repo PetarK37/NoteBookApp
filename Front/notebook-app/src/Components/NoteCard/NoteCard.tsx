@@ -5,9 +5,13 @@ import '../../App.css'
 import Button from '../Button/Button'
 import { useForm } from "react-hook-form";
 import ConfirmationModal from '../Modal/ConfirmationModal'
+import { deleteNote } from '../../Services/ApiService';
+import { toast } from 'react-toastify';
+
 
 interface NoteCardProps {
     note: Note,
+    onDelete?: () => void
 }
 
 interface NoteEditCardProps {
@@ -18,8 +22,21 @@ interface NoteEditCardProps {
 
 type NoteState = 'edit' | 'display' | 'delete'
 
-function NoteCard({ note }: NoteCardProps) {
+function NoteCard({ note, onDelete }: NoteCardProps) {
     const [noteState, setNoteState] = useState<NoteState>('display')
+
+    const handleDeleteNote = async () => {
+        try {
+            if (onDelete) {
+                await deleteNote(note.version, note.uuid.toString())
+                onDelete()
+            }
+        } catch (error) {
+            if (error instanceof Error) {
+                toast.error(error.message, { toastId: "delete" })
+            }
+        }
+    }
 
     return (
         <div className='note gap-12 flex flex-column '>
@@ -27,12 +44,12 @@ function NoteCard({ note }: NoteCardProps) {
             {(noteState === 'edit') && <NoteCardEditContent note={note} onCancel={() => setNoteState('display')}></NoteCardEditContent>}
             {(noteState === 'display' || noteState === 'delete') &&
                 <div className='note-action-row flex justify-content-between'>
-                    
-                        <Button text='Edit' onClick={() => { setNoteState('edit') }} className='btn-larger btn-edit'></Button>
-                        <Button text='Delete' onClick={() => { setNoteState('delete') }} className='btn-larger btn-delete'></Button>
-                    </div>
-                }
-            <ConfirmationModal title='Are you shure that you want to delete this note?' content={<DeleteModalBody />} onOk={() => alert("ok")} onCancel={() => { setNoteState('display') }} isDisplayed={noteState === 'delete'}></ConfirmationModal>
+
+                    <Button text='Edit' onClick={() => { setNoteState('edit') }} className='btn-larger btn-edit'></Button>
+                    <Button text='Delete' onClick={() => { setNoteState('delete') }} className='btn-larger btn-delete'></Button>
+                </div>
+            }
+            <ConfirmationModal title='Are you shure that you want to delete this note?' content={<DeleteModalBody />} onOk={() => handleDeleteNote()} onCancel={() => { setNoteState('display') }} isDisplayed={noteState === 'delete'}></ConfirmationModal>
         </div>
 
     )
@@ -62,7 +79,7 @@ function NoteCardEditContent({ note, onCancel, onSubmit }: NoteEditCardProps) {
             </article>
             <div className='note-action-row flex justify-content-between'>
                 <Button btnType='submit' text='Save' className='btn-larger btn-edit'></Button>
-                <Button btnType='button'  text='Cancel' onClick={onCancel} className='btn-larger btn-delete'></Button>
+                <Button btnType='button' text='Cancel' onClick={onCancel} className='btn-larger btn-delete'></Button>
             </div>
         </form>)
 }

@@ -26,7 +26,7 @@ function AddNoteDialog({ title, onCancel, onSubmit, isDisplayed = false }: AddMo
         reset();
     }
 
-    const postNote = async () => {
+    const handleAddNote = async () => {
         if(errors.title || errors.content){
             return;
         }
@@ -54,7 +54,7 @@ function AddNoteDialog({ title, onCancel, onSubmit, isDisplayed = false }: AddMo
                     <h3 onClick={closeModal}>X</h3>
                 </div>
                 <div className={'modal-body'}>                    
-                    <form className='add-form gap-12 flex flex-column ' onSubmit={handleSubmit(postNote)}>
+                    <form className='add-form gap-12 flex flex-column ' onSubmit={handleSubmit(handleAddNote)}>
                         <header className='flex align-items-center'>
                             <input className={`${errors.title ? 'invalid ' : ''}input`} placeholder={`${errors.title ? "This feild is required!" : 'Enter note title'}`} defaultValue={""} {...register('title',{ required: true })}></input>
                         </header>
