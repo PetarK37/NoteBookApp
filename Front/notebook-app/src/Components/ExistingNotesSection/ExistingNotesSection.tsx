@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function ExistingNotesSection() {
-  const [notes, setNotes] = useState<Note[]>();
+  const [notes, setNotes] = useState<Note[]>([]);
   const [showAddDialog,setShowAddDialog] = useState(false);
 
   useEffect(() => {
@@ -18,8 +18,8 @@ function ExistingNotesSection() {
 
   const fetchNotes = async () => {
     try{
-      const notes = await getNotes();
-      setNotes(notes)
+      const notesResponse = await getNotes();
+      setNotes(notesResponse)
     }catch(error){
       if(error instanceof Error){
         toast.error(error.message,{toastId: "getAll"})

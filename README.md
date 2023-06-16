@@ -9,17 +9,16 @@ The Notebook App offers the following CRUD (Create, Read, Update, Delete) operat
 3. **Update Note**: Users can edit the title and content  of an existing note.
 4. **Delete Note**: Users can delete a note.
 
-## Requirements
+## Prerequisites
 Before running the Notebook App, make sure you have the following dependencies installed:
+
 - Node.js with NVM (Node Version Manager)
 - Java 17
 - Maven
 - MySQL
 
-**Note:** If you're going to run it using Docker-compose, then the only thing you need is:
-- Docker and Docker-compose
-
 ## Running the Project
+
 
 ### Using Docker Compose
 1. Clone the repository: `git clone https://github.com/your-username/notebook-app.git`
@@ -41,6 +40,8 @@ Before running the Notebook App, make sure you have the following dependencies i
    - Install the dependencies: `npm install`
    - Start the React development server: `npm start`
 7. Access the Notebook App in your browser at `http://localhost:3000`.
+
+> **Reminder:** you can test back-end part using postam collection provided in `NoteBook.postman_collection.json`.
 
 > **Note**: If you choose to run the application manually, ensure that both the back-end server and the front-end development server are running simultaneously. Additionally, make sure you have set up NVM and switched to the appropriate Node.js version required for the project.
 
